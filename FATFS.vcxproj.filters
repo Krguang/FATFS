@@ -414,5 +414,8 @@
     <None Include="stm32.xml">
       <Filter>VisualGDB settings</Filter>
     </None>
+    <ClCompile Include="Middlewares\Third_Party\FatFs\src\option\cc936.c">
+      <Filter>Source files\Middlewares\Third_Party\FatFs\src\option</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

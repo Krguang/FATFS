@@ -36,7 +36,7 @@ error:
 	$(error Invalid configuration, please check your inputs)
 endif
 
-SOURCEFILES := Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sd.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_sdmmc.c Middlewares/Third_Party/FatFs/src/diskio.c Middlewares/Third_Party/FatFs/src/ff.c Middlewares/Third_Party/FatFs/src/ff_gen_drv.c Middlewares/Third_Party/FatFs/src/drivers/sd_diskio.c Middlewares/Third_Party/FatFs/src/option/syscall.c Src/bsp_driver_sd.c Src/dma.c Src/fatfs.c Src/gpio.c Src/main.c Src/sdio.c Src/stm32f1xx_hal_msp.c Src/stm32f1xx_it.c Src/system_stm32f1xx.c Src/usart.c $(BSP_ROOT)/STM32F1xxxx/StartupFiles/startup_stm32f103xe.c
+SOURCEFILES := Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash_ex.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio_ex.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_pwr.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_sd.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_sdmmc.c Middlewares/Third_Party/FatFs/src/diskio.c Middlewares/Third_Party/FatFs/src/ff.c Middlewares/Third_Party/FatFs/src/ff_gen_drv.c Middlewares/Third_Party/FatFs/src/drivers/sd_diskio.c Middlewares/Third_Party/FatFs/src/option/cc936.c Middlewares/Third_Party/FatFs/src/option/syscall.c Src/bsp_driver_sd.c Src/dma.c Src/fatfs.c Src/gpio.c Src/main.c Src/sdio.c Src/stm32f1xx_hal_msp.c Src/stm32f1xx_it.c Src/system_stm32f1xx.c Src/usart.c $(BSP_ROOT)/STM32F1xxxx/StartupFiles/startup_stm32f103xe.c
 EXTERNAL_LIBS := 
 EXTERNAL_LIBS_COPIED := $(foreach lib, $(EXTERNAL_LIBS),$(BINARYDIR)/$(notdir $(lib)))
 
@@ -255,6 +255,10 @@ $(BINARYDIR)/ff_gen_drv.o : Middlewares/Third_Party/FatFs/src/ff_gen_drv.c $(all
 
 
 $(BINARYDIR)/sd_diskio.o : Middlewares/Third_Party/FatFs/src/drivers/sd_diskio.c $(all_make_files) |$(BINARYDIR)
+	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
+
+
+$(BINARYDIR)/cc936.o : Middlewares/Third_Party/FatFs/src/option/cc936.c $(all_make_files) |$(BINARYDIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -MD -MF $(@:.o=.dep)
 
 

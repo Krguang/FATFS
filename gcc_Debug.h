@@ -1186,6 +1186,7 @@
 //Drivers\STM32F1xx_HAL_Driver\Inc\Legacy
 //Middlewares\Third_Party\FatFs\src\drivers
 //Middlewares\Third_Party\FatFs\src
+//Middlewares\Third_Party\FatFs\src\option
 // --- Include directories end --- //
 
 

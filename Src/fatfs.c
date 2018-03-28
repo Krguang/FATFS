@@ -58,7 +58,7 @@ FIL SDFile;       /* File object for SD */
 FRESULT f_res;                    
 UINT fnum;            					  
 BYTE ReadBuffer[1024] = { 0 };       
-BYTE WriteBuffer[] = "新建文件系统测试文件\n";
+BYTE WriteBuffer[] = "1234567890abcdefghigk\n";
 static void printf_fatfs_error(FRESULT fresult);
 
 /* USER CODE END Variables */    
@@ -75,23 +75,63 @@ void MX_FATFS_Init(void)
 	  f_res = f_mount(&SDFatFS, (TCHAR const*)SDPath, 1);
 	  printf_fatfs_error(f_res);
 	  if (f_res == FR_OK) {
-		  printf("》文件系统挂载成功。可以进行读写测试\n");
+		  printf("》文件系统挂载成功,可以进行读写测试\n");
+		  
+		  printf("******文件写入测试... ******\n");
+		  f_res = f_open(&SDFile, "FatFs读写测试文件.txt", FA_CREATE_ALWAYS | FA_WRITE);
+		  if (f_res == FR_OK)
+		  {
+			  printf("打开/创建FatFs读写测试文件.txt文件成功，向文件写入数据\n");
 
+			  f_res = f_write(&SDFile, WriteBuffer, sizeof(WriteBuffer), &fnum);
+			  if (f_res == FR_OK)
+			  {
+				  printf("》文件写入成功，写入字节数据： %d\n", fnum);
+				  printf("》向文件写入的数据为： \n%s\n", WriteBuffer);
+			  }
+			  else
+			  {
+				  printf("！！文件写入失败(%d)\n", f_res);
+			  }
+			  f_close(&SDFile);
+		  }
+		  else
+		  {
+			  printf("！！打开创建文件失败\n");
+		  }
+
+
+		  printf("****** 即将进行文件读测试... ******\n");
+		  f_res = f_open(&SDFile, "FatFs读写测试文件.txt", FA_OPEN_EXISTING | FA_READ);
+		  if (f_res == FR_OK)
+		  {
+			  printf("》打开文件成功\n");
+			  f_res = f_read(&SDFile, ReadBuffer, sizeof(ReadBuffer), &fnum);
+			  if (f_res == FR_OK)
+			  {
+				  printf("》文件读取成功,读到字节数据： %d\n", fnum);
+				  printf("》读取文件数据为： \n%s \n", ReadBuffer);
+				  for (size_t i = 0; i < sizeof(ReadBuffer); i++)
+				  {
+					  printf("%x  ", ReadBuffer[i]);
+				  }
+			  }
+			  else
+			  {
+				  printf("！！请问年间读取失败： (%d)\n", f_res);
+			  }
+		  }
+		  else
+		  {
+			  printf("！！文件打开失败。\n");
+		  }
+
+		  f_close(&SDFile);
+		  f_res = f_mount(NULL, (TCHAR const*)SDPath, 1);
 	  }
+	  FATFS_UnLinkDriver(SDPath);
   }
   /* USER CODE END Init */
-}
-
-/**
-  * @brief  Gets Time from RTC 
-  * @param  None
-  * @retval Time in DWORD
-  */
-DWORD get_fattime(void)
-{
-  /* USER CODE BEGIN get_fattime */
-  return 0;
-  /* USER CODE END get_fattime */  
 }
 
 /* USER CODE BEGIN Application */
