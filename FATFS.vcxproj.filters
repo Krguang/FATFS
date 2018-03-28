@@ -360,9 +360,6 @@
     <ClInclude Include="Inc\fatfs.h">
       <Filter>Header files\Inc</Filter>
     </ClInclude>
-    <ClInclude Include="Inc\ffconf.h">
-      <Filter>Header files\Inc</Filter>
-    </ClInclude>
     <ClInclude Include="Inc\gpio.h">
       <Filter>Header files\Inc</Filter>
     </ClInclude>
@@ -385,9 +382,6 @@
       <Filter>Header files\Middlewares\Third_Party\FatFs\src</Filter>
     </ClInclude>
     <ClInclude Include="Middlewares\Third_Party\FatFs\src\ff.h">
-      <Filter>Header files\Middlewares\Third_Party\FatFs\src</Filter>
-    </ClInclude>
-    <ClInclude Include="Middlewares\Third_Party\FatFs\src\ffconf_template.h">
       <Filter>Header files\Middlewares\Third_Party\FatFs\src</Filter>
     </ClInclude>
     <ClInclude Include="Middlewares\Third_Party\FatFs\src\ff_gen_drv.h">
@@ -414,8 +408,10 @@
     <None Include="stm32.xml">
       <Filter>VisualGDB settings</Filter>
     </None>
-    <ClCompile Include="Middlewares\Third_Party\FatFs\src\option\cc936.c">
-      <Filter>Source files\Middlewares\Third_Party\FatFs\src\option</Filter>
-    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Middlewares\Third_Party\FatFs\src\ffconf.h">
+      <Filter>Header files\Middlewares\Third_Party\FatFs\src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

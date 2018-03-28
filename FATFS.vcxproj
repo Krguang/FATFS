@@ -97,7 +97,6 @@
     <ClCompile Include="Middlewares\Third_Party\FatFs\src\ff.c" />
     <ClCompile Include="Middlewares\Third_Party\FatFs\src\ff_gen_drv.c" />
     <ClCompile Include="Middlewares\Third_Party\FatFs\src\drivers\sd_diskio.c" />
-    <ClCompile Include="Middlewares\Third_Party\FatFs\src\option\cc936.c" />
     <ClCompile Include="Middlewares\Third_Party\FatFs\src\option\syscall.c" />
     <ClCompile Include="Src\bsp_driver_sd.c" />
     <ClCompile Include="Src\dma.c" />
@@ -151,7 +150,6 @@
     <ClInclude Include="Inc\bsp_driver_sd.h" />
     <ClInclude Include="Inc\dma.h" />
     <ClInclude Include="Inc\fatfs.h" />
-    <ClInclude Include="Inc\ffconf.h" />
     <ClInclude Include="Inc\gpio.h" />
     <ClInclude Include="Inc\main.h" />
     <ClInclude Include="Inc\sdio.h" />
@@ -160,7 +158,7 @@
     <ClInclude Include="Inc\usart.h" />
     <ClInclude Include="Middlewares\Third_Party\FatFs\src\diskio.h" />
     <ClInclude Include="Middlewares\Third_Party\FatFs\src\ff.h" />
-    <ClInclude Include="Middlewares\Third_Party\FatFs\src\ffconf_template.h" />
+    <ClInclude Include="Middlewares\Third_Party\FatFs\src\ffconf.h" />
     <ClInclude Include="Middlewares\Third_Party\FatFs\src\ff_gen_drv.h" />
     <ClInclude Include="Middlewares\Third_Party\FatFs\src\integer.h" />
     <ClInclude Include="Middlewares\Third_Party\FatFs\src\drivers\sd_diskio.h" />

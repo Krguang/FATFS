@@ -78,7 +78,7 @@ void MX_FATFS_Init(void)
 		  printf("》文件系统挂载成功,可以进行读写测试\n");
 		  
 		  printf("******文件写入测试... ******\n");
-		  f_res = f_open(&SDFile, "FatFs读写测试文件.txt", FA_CREATE_ALWAYS | FA_WRITE);
+		  f_res = f_open(&SDFile, "FatFs.txt", FA_CREATE_ALWAYS | FA_WRITE);
 		  if (f_res == FR_OK)
 		  {
 			  printf("打开/创建FatFs读写测试文件.txt文件成功，向文件写入数据\n");
@@ -102,7 +102,7 @@ void MX_FATFS_Init(void)
 
 
 		  printf("****** 即将进行文件读测试... ******\n");
-		  f_res = f_open(&SDFile, "FatFs读写测试文件.txt", FA_OPEN_EXISTING | FA_READ);
+		  f_res = f_open(&SDFile, "FatFs.txt", FA_OPEN_EXISTING | FA_READ);
 		  if (f_res == FR_OK)
 		  {
 			  printf("》打开文件成功\n");
